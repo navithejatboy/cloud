@@ -1,0 +1,113 @@
+<html>
+<style>
+form {
+    border: 3px solid black;
+}
+
+input[type=text]
+{
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+select 
+{
+width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid black;
+    box-sizing: border-box;
+}
+button {
+    background-color: black;
+    color: white;
+    padding: 24px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+}
+
+button:hover {
+    opacity: 0.8;
+}
+.imgcontainer {
+    text-align: center;
+    margin: 24px 0 12px 0;
+}
+
+img.cloud {
+    width: 40%;
+    border-radius: 50%;
+}
+
+
+
+
+</style>
+<body>
+
+<form action="scripts/iaas.py">
+
+ <div class="imgcontainer">
+    <img src="images/i.jpg" alt="cloud" class="cloud" >
+  </div>
+
+<div>
+        <label for="osname">Enter your OS name:</label>
+        <input type="text" name="osname" />
+</div>
+<div>
+        <label for="ram">Enter your Ram size in MB:</label>
+        <select name="ram">
+		<option valve="1024">1Gb</option>
+		<option valve="2048">2Gb</option>
+		<option valve="3072">3Gb</option>
+		<option valve="4096">4Gb</option>
+	</select>
+</div>
+<div>
+        <label for="cpu">Enter number of CPU core:</label>
+	<select name="cpu">
+		<option valve="1">1</option>
+		<option valve="2">2</option>
+		<option valve="3">3</option>
+		<option valve="4">4</option>
+	</select>
+</div>
+<div>
+        <label for="storage">Enter your Storage size in GB:</label>
+	<select name="storage">
+		<option valve="10">1</option>
+		<option valve="20">2</option>
+		<option valve="30">3</option>
+		<option valve="40">4</option>
+	</select>
+</div>
+<div>
+	<label for="os">Select OS:</label>
+		<select name ="os">
+			 <option value="rhel-server-7.3-x86_64-dvd.iso">Redhat</option>
+ 			 <option value="Win_7_32Bit.iso">windows</option>
+		</select>
+</div>
+<div>
+	<label for="ostype">Select OS Version:</label>
+		<select name ="ostype">
+			 <option value="rhel7">Redhat 7</option>
+ 			 <option value="win7">windows 7</option>
+		</select>
+</div>
+
+<button type="submit">Submit</button>
+
+</form>
+
+</body>
+</html>
+
+

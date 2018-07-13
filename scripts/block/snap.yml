@@ -1,0 +1,20 @@
+---
+- hosts: web
+  tasks:
+     - lvol:
+           vg: '/dev/vgcloud'
+           lv: 'jat-lv2'
+           snapshot: jat-snap1
+           size: '100'
+     - service:
+           name: tgtd
+           state: started
+- hosts: jat
+  tasks:
+     - service:
+           name: 'iscsi-initiator-utils'
+           state: present
+           use: yum
+     - command: 'iscsiadm --mode node --targetname jat_block --portal 192.168.43.113:3260 --logout'
+     - command: 'iscsiadm --mode discoveredb --type sendtargets --portal 192.168.43.113 --discover'
+     - command: 'iscsiadm --mode node --targetname jat_block --portal 192.168.43.113:3260 --login'

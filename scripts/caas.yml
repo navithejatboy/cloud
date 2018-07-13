@@ -1,0 +1,15 @@
+
+---
+- hosts: web
+  tasks:
+     - package:
+         name: "docker-engine"
+         state: present
+     - service:
+         name: "docker"
+         state: started
+     - docker_container:
+         name: "jai"
+         image: centos:latest
+         state: present
+

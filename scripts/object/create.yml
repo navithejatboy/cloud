@@ -1,0 +1,39 @@
+
+---
+- hosts: web
+  tasks:
+      - lvol:
+          vg: '/dev/vgcloud'
+          lv: 'jai -lv1'
+          size: '1111'
+      - filesystem:
+         fstype: ext4
+         dev: '/dev/vgcloud/jai -lv1'
+      - file:
+          path: '/object/jai -lv1'
+          state: directory
+      - blockinfile:
+          block: '/object/jai -lv1  *(rw,no_root_squash)'
+          path: '/etc/exports'
+      - mount:
+          path: '/object/jai -lv1'
+          src: '/dev/vgcloud/jai -lv1'
+          fstype: ext4
+          state: mounted
+      - service:
+          name: 'nfs'
+          state: restarted
+- hosts: jai 
+  tasks:
+      - service:
+          name: 'nfs'
+          state: restarted
+      - file:
+          path: '/media/jai '
+          state: directory
+      - mount:
+          path: '/media/jai '
+          src: '192.168.43.231:/object/jai -lv1'
+          fstab: /webcontent/faltu.txt
+          fstype: nfs
+          state: mounted

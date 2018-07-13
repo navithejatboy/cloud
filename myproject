@@ -1,0 +1,4 @@
+[web]
+192.168.43.231 ansible_ssh_user=root  ansible_ssh_pass=Navi7891
+[jaja]
+192.168.43.10 ansible_ssh_user=root  ansible_ssh_pass=redhat
